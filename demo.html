@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>menu v1.0.0</title>
+
+    <link href="assets/libs/fontawesome-free-6.7.2/all.css" rel="stylesheet" />
+    <link href="assets/styles/demo.css" rel="stylesheet" />
+
+    <script src="assets/libs/jquery-3.7.1/jquery.js"></script>
+    <script src="assets/libs/jquery-ui-1.14.1/jquery-ui.js"></script>
+
+    <link href="assets/menu.css" rel="stylesheet" />
+    <script src="assets/menu.js"></script>
+  </head>
+
+  <body>
+    <div class="page-container">
+      <!-- + Header -->
+      <header>
+        <h1>Menu Widget Demo</h1>
+        <p>Diese Demonstration zeigt die Leistungsfähigkeit und Flexibilität des Menu-Widgets für responsive Navigationslösungen.</p>
+        <p>Das Widget unterstützt beliebig tiefe Verschachtelungen, wobei in der Praxis selten mehr als 5 Ebenen benötigt werden. Es passt sich automatisch der Bildschirmgröße an und bietet sowohl Click- als auch Hover-Interaktionen.</p>
+      </header>
+      <!-- - Header -->
+
+      <!-- + Menu 1 -->
+      <div class="demo-container">
+        <h2>Standard Menu</h2>
+        <div class="feature-description">Dieses Menu passt sich automatisch dem Viewport an und wechselt zwischen horizontaler und vertikaler Darstellung. Die tiefste Verschachtelung (Ebene 1-D) geht bis zur 10. Ebene.</div>
+        <div id="menu-1" data-plugin="menu">
+          <ul>
+            <li>
+              <a href="#">
+                <i class="fas fa-sitemap"></i>
+                <span>Ebene 1-A</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-A1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A1a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A1b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A1b1</a></li>
+                        <li><a href="#">Ebene 4-A1b2</a></li>
+                        <li>
+                          <a href="#">Ebene 4-A1b3</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-A1b3a</a></li>
+                            <li><a href="#">Ebene 5-A1b3b</a></li>
+                            <li><a href="#">Ebene 5-A1b3c</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-A1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-A2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A2a</a></li>
+                    <li><a href="#">Ebene 3-A2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A2c1</a></li>
+                        <li><a href="#">Ebene 4-A2c2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-A3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-project-diagram"></i>
+                <span>Ebene 1-B</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-B1</a></li>
+                <li>
+                  <a href="#">Ebene 2-B2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B2a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-B2b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-B2b1</a></li>
+                        <li>
+                          <a href="#">Ebene 4-B2b2</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-B2b2a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-B2b2b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-B2b2b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-B2b2b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-B2b2b2a</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2b</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-B2b2b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-B2b2c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-B2b3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-B2c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-B3</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B3a</a></li>
+                    <li><a href="#">Ebene 3-B3b</a></li>
+                    <li><a href="#">Ebene 3-B3c</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-folder-tree"></i>
+                <span>Ebene 1-C</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-C1</a></li>
+                <li>
+                  <a href="#">Ebene 2-C2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-C2a</a></li>
+                    <li><a href="#">Ebene 3-C2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-C2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-C2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-C2c1a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-C2c1b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-C2c1b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-C2c1b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-C2c1b2a</a></li>
+                                    <li>
+                                      <a href="#">Ebene 7-C2c1b2b</a>
+                                      <ul>
+                                        <li><a href="#">Ebene 8-C2c1b2b1</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b2</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-C2c1b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-C2c1b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-C2c1c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-C2c2</a></li>
+                        <li><a href="#">Ebene 4-C2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-C3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-building"></i>
+                <span>Ebene 1-D</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-D1</a></li>
+                <li>
+                  <a href="#">Ebene 2-D2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-D2a</a></li>
+                    <li><a href="#">Ebene 3-D2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-D2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-D2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-D2c1a</a></li>
+                            <li><a href="#">Ebene 5-D2c1b</a></li>
+                            <li>
+                              <a href="#">Ebene 5-D2c1c</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-D2c1c1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-D2c1c2</a>
+                                  <ul>
+                                    <li>
+                                      <a href="#">Ebene 7-D2c1c2a</a>
+                                      <ul>
+                                        <li>
+                                          <a href="#">Ebene 8-D2c1c2a1</a>
+                                          <ul>
+                                            <li><a href="#">Ebene 9-D2c1c2a1a</a></li>
+                                            <li>
+                                              <a href="#">Ebene 9-D2c1c2a1b</a>
+                                              <ul>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b1</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b2</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b3</a></li>
+                                              </ul>
+                                            </li>
+                                            <li><a href="#">Ebene 9-D2c1c2a1c</a></li>
+                                          </ul>
+                                        </li>
+                                        <li><a href="#">Ebene 8-D2c1c2a2</a></li>
+                                        <li><a href="#">Ebene 8-D2c1c2a3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-D2c1c2b</a></li>
+                                    <li><a href="#">Ebene 7-D2c1c2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-D2c1c3</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-D2c2</a></li>
+                        <li><a href="#">Ebene 4-D2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-D3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-chart-pie"></i>
+                <span>Ebene 1-E</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-E1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E1a</a></li>
+                    <li><a href="#">Ebene 3-E1b</a></li>
+                    <li><a href="#">Ebene 3-E1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-E2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E2a</a></li>
+                    <li><a href="#">Ebene 3-E2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-E2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-E2c1</a></li>
+                        <li><a href="#">Ebene 4-E2c2</a></li>
+                        <li><a href="#">Ebene 4-E2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-E3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="code-example">
+          <pre><code>$("#menu-1").menu();</code></pre>
+        </div>
+      </div>
+      <!-- - Menu 1 -->
+
+      <!-- + Menu 2 -->
+      <div class="demo-container">
+        <h2>Standard Menu (mit Mouse-Hover)</h2>
+        <div class="feature-description">Diese Variante öffnet Untermenüs beim Überfahren mit der Maus, was besonders auf Desktop-Geräten für eine schnellere Navigation sorgt.</div>
+        <div id="menu-2" data-plugin="menu" data-mouse-hover="true">
+          <ul>
+            <li>
+              <a href="#">
+                <i class="fas fa-sitemap"></i>
+                <span>Ebene 1-A</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-A1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A1a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A1b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A1b1</a></li>
+                        <li><a href="#">Ebene 4-A1b2</a></li>
+                        <li>
+                          <a href="#">Ebene 4-A1b3</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-A1b3a</a></li>
+                            <li><a href="#">Ebene 5-A1b3b</a></li>
+                            <li><a href="#">Ebene 5-A1b3c</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-A1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-A2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A2a</a></li>
+                    <li><a href="#">Ebene 3-A2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A2c1</a></li>
+                        <li><a href="#">Ebene 4-A2c2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-A3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-project-diagram"></i>
+                <span>Ebene 1-B</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-B1</a></li>
+                <li>
+                  <a href="#">Ebene 2-B2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B2a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-B2b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-B2b1</a></li>
+                        <li>
+                          <a href="#">Ebene 4-B2b2</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-B2b2a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-B2b2b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-B2b2b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-B2b2b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-B2b2b2a</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2b</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-B2b2b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-B2b2c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-B2b3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-B2c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-B3</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B3a</a></li>
+                    <li><a href="#">Ebene 3-B3b</a></li>
+                    <li><a href="#">Ebene 3-B3c</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-folder-tree"></i>
+                <span>Ebene 1-C</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-C1</a></li>
+                <li>
+                  <a href="#">Ebene 2-C2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-C2a</a></li>
+                    <li><a href="#">Ebene 3-C2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-C2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-C2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-C2c1a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-C2c1b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-C2c1b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-C2c1b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-C2c1b2a</a></li>
+                                    <li>
+                                      <a href="#">Ebene 7-C2c1b2b</a>
+                                      <ul>
+                                        <li><a href="#">Ebene 8-C2c1b2b1</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b2</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-C2c1b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-C2c1b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-C2c1c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-C2c2</a></li>
+                        <li><a href="#">Ebene 4-C2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-C3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-building"></i>
+                <span>Ebene 1-D</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-D1</a></li>
+                <li>
+                  <a href="#">Ebene 2-D2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-D2a</a></li>
+                    <li><a href="#">Ebene 3-D2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-D2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-D2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-D2c1a</a></li>
+                            <li><a href="#">Ebene 5-D2c1b</a></li>
+                            <li>
+                              <a href="#">Ebene 5-D2c1c</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-D2c1c1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-D2c1c2</a>
+                                  <ul>
+                                    <li>
+                                      <a href="#">Ebene 7-D2c1c2a</a>
+                                      <ul>
+                                        <li>
+                                          <a href="#">Ebene 8-D2c1c2a1</a>
+                                          <ul>
+                                            <li><a href="#">Ebene 9-D2c1c2a1a</a></li>
+                                            <li>
+                                              <a href="#">Ebene 9-D2c1c2a1b</a>
+                                              <ul>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b1</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b2</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b3</a></li>
+                                              </ul>
+                                            </li>
+                                            <li><a href="#">Ebene 9-D2c1c2a1c</a></li>
+                                          </ul>
+                                        </li>
+                                        <li><a href="#">Ebene 8-D2c1c2a2</a></li>
+                                        <li><a href="#">Ebene 8-D2c1c2a3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-D2c1c2b</a></li>
+                                    <li><a href="#">Ebene 7-D2c1c2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-D2c1c3</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-D2c2</a></li>
+                        <li><a href="#">Ebene 4-D2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-D3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-chart-pie"></i>
+                <span>Ebene 1-E</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-E1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E1a</a></li>
+                    <li><a href="#">Ebene 3-E1b</a></li>
+                    <li><a href="#">Ebene 3-E1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-E2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E2a</a></li>
+                    <li><a href="#">Ebene 3-E2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-E2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-E2c1</a></li>
+                        <li><a href="#">Ebene 4-E2c2</a></li>
+                        <li><a href="#">Ebene 4-E2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-E3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="code-example">
+          <pre><code>$("#menu-2").menu({
+  mouseHover: true
+});</code></pre>
+        </div>
+      </div>
+      <!-- - Menu 2 -->
+
+      <!-- + Menu 3 -->
+      <div class="demo-container">
+        <h2>Horizontales Menu</h2>
+        <div class="feature-description">Diese Konfiguration erzwingt ein horizontales Menü unabhängig von der Bildschirmgröße. Ideal für breite Hauptnavigationen.</div>
+        <div id="menu-3" data-plugin="menu" data-breakpoint="0">
+          <ul>
+            <li>
+              <a href="#">
+                <i class="fas fa-sitemap"></i>
+                <span>Ebene 1-A</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-A1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A1a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A1b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A1b1</a></li>
+                        <li><a href="#">Ebene 4-A1b2</a></li>
+                        <li>
+                          <a href="#">Ebene 4-A1b3</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-A1b3a</a></li>
+                            <li><a href="#">Ebene 5-A1b3b</a></li>
+                            <li><a href="#">Ebene 5-A1b3c</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-A1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-A2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A2a</a></li>
+                    <li><a href="#">Ebene 3-A2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A2c1</a></li>
+                        <li><a href="#">Ebene 4-A2c2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-A3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-project-diagram"></i>
+                <span>Ebene 1-B</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-B1</a></li>
+                <li>
+                  <a href="#">Ebene 2-B2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B2a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-B2b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-B2b1</a></li>
+                        <li>
+                          <a href="#">Ebene 4-B2b2</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-B2b2a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-B2b2b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-B2b2b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-B2b2b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-B2b2b2a</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2b</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-B2b2b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-B2b2c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-B2b3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-B2c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-B3</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B3a</a></li>
+                    <li><a href="#">Ebene 3-B3b</a></li>
+                    <li><a href="#">Ebene 3-B3c</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-folder-tree"></i>
+                <span>Ebene 1-C</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-C1</a></li>
+                <li>
+                  <a href="#">Ebene 2-C2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-C2a</a></li>
+                    <li><a href="#">Ebene 3-C2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-C2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-C2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-C2c1a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-C2c1b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-C2c1b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-C2c1b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-C2c1b2a</a></li>
+                                    <li>
+                                      <a href="#">Ebene 7-C2c1b2b</a>
+                                      <ul>
+                                        <li><a href="#">Ebene 8-C2c1b2b1</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b2</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-C2c1b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-C2c1b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-C2c1c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-C2c2</a></li>
+                        <li><a href="#">Ebene 4-C2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-C3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-building"></i>
+                <span>Ebene 1-D</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-D1</a></li>
+                <li>
+                  <a href="#">Ebene 2-D2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-D2a</a></li>
+                    <li><a href="#">Ebene 3-D2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-D2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-D2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-D2c1a</a></li>
+                            <li><a href="#">Ebene 5-D2c1b</a></li>
+                            <li>
+                              <a href="#">Ebene 5-D2c1c</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-D2c1c1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-D2c1c2</a>
+                                  <ul>
+                                    <li>
+                                      <a href="#">Ebene 7-D2c1c2a</a>
+                                      <ul>
+                                        <li>
+                                          <a href="#">Ebene 8-D2c1c2a1</a>
+                                          <ul>
+                                            <li><a href="#">Ebene 9-D2c1c2a1a</a></li>
+                                            <li>
+                                              <a href="#">Ebene 9-D2c1c2a1b</a>
+                                              <ul>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b1</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b2</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b3</a></li>
+                                              </ul>
+                                            </li>
+                                            <li><a href="#">Ebene 9-D2c1c2a1c</a></li>
+                                          </ul>
+                                        </li>
+                                        <li><a href="#">Ebene 8-D2c1c2a2</a></li>
+                                        <li><a href="#">Ebene 8-D2c1c2a3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-D2c1c2b</a></li>
+                                    <li><a href="#">Ebene 7-D2c1c2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-D2c1c3</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-D2c2</a></li>
+                        <li><a href="#">Ebene 4-D2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-D3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-chart-pie"></i>
+                <span>Ebene 1-E</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-E1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E1a</a></li>
+                    <li><a href="#">Ebene 3-E1b</a></li>
+                    <li><a href="#">Ebene 3-E1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-E2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E2a</a></li>
+                    <li><a href="#">Ebene 3-E2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-E2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-E2c1</a></li>
+                        <li><a href="#">Ebene 4-E2c2</a></li>
+                        <li><a href="#">Ebene 4-E2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-E3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="code-example">
+          <pre><code>$("#menu-3").menu({
+  breakpoint: 0
+});</code></pre>
+        </div>
+      </div>
+      <!-- - Menu 3 -->
+
+      <!-- + Menu 4 -->
+      <div class="demo-container">
+        <h2>Vertikales Menu</h2>
+        <div class="feature-description">Diese Konfiguration erzwingt ein vertikales Menü unabhängig von der Bildschirmgröße. Ideal für Seitenleisten oder kompakte Navigationen.</div>
+        <div id="menu-4" data-plugin="menu" data-breakpoint="99999">
+          <ul>
+            <li>
+              <a href="#">
+                <i class="fas fa-sitemap"></i>
+                <span>Ebene 1-A</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-A1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A1a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A1b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A1b1</a></li>
+                        <li><a href="#">Ebene 4-A1b2</a></li>
+                        <li>
+                          <a href="#">Ebene 4-A1b3</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-A1b3a</a></li>
+                            <li><a href="#">Ebene 5-A1b3b</a></li>
+                            <li><a href="#">Ebene 5-A1b3c</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-A1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-A2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-A2a</a></li>
+                    <li><a href="#">Ebene 3-A2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-A2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-A2c1</a></li>
+                        <li><a href="#">Ebene 4-A2c2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-A3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-project-diagram"></i>
+                <span>Ebene 1-B</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-B1</a></li>
+                <li>
+                  <a href="#">Ebene 2-B2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B2a</a></li>
+                    <li>
+                      <a href="#">Ebene 3-B2b</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-B2b1</a></li>
+                        <li>
+                          <a href="#">Ebene 4-B2b2</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-B2b2a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-B2b2b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-B2b2b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-B2b2b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-B2b2b2a</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2b</a></li>
+                                    <li><a href="#">Ebene 7-B2b2b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-B2b2b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-B2b2c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-B2b3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Ebene 3-B2c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-B3</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-B3a</a></li>
+                    <li><a href="#">Ebene 3-B3b</a></li>
+                    <li><a href="#">Ebene 3-B3c</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-folder-tree"></i>
+                <span>Ebene 1-C</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-C1</a></li>
+                <li>
+                  <a href="#">Ebene 2-C2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-C2a</a></li>
+                    <li><a href="#">Ebene 3-C2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-C2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-C2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-C2c1a</a></li>
+                            <li>
+                              <a href="#">Ebene 5-C2c1b</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-C2c1b1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-C2c1b2</a>
+                                  <ul>
+                                    <li><a href="#">Ebene 7-C2c1b2a</a></li>
+                                    <li>
+                                      <a href="#">Ebene 7-C2c1b2b</a>
+                                      <ul>
+                                        <li><a href="#">Ebene 8-C2c1b2b1</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b2</a></li>
+                                        <li><a href="#">Ebene 8-C2c1b2b3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-C2c1b2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-C2c1b3</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Ebene 5-C2c1c</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-C2c2</a></li>
+                        <li><a href="#">Ebene 4-C2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-C3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-building"></i>
+                <span>Ebene 1-D</span>
+              </a>
+              <ul>
+                <li><a href="#">Ebene 2-D1</a></li>
+                <li>
+                  <a href="#">Ebene 2-D2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-D2a</a></li>
+                    <li><a href="#">Ebene 3-D2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-D2c</a>
+                      <ul>
+                        <li>
+                          <a href="#">Ebene 4-D2c1</a>
+                          <ul>
+                            <li><a href="#">Ebene 5-D2c1a</a></li>
+                            <li><a href="#">Ebene 5-D2c1b</a></li>
+                            <li>
+                              <a href="#">Ebene 5-D2c1c</a>
+                              <ul>
+                                <li><a href="#">Ebene 6-D2c1c1</a></li>
+                                <li>
+                                  <a href="#">Ebene 6-D2c1c2</a>
+                                  <ul>
+                                    <li>
+                                      <a href="#">Ebene 7-D2c1c2a</a>
+                                      <ul>
+                                        <li>
+                                          <a href="#">Ebene 8-D2c1c2a1</a>
+                                          <ul>
+                                            <li><a href="#">Ebene 9-D2c1c2a1a</a></li>
+                                            <li>
+                                              <a href="#">Ebene 9-D2c1c2a1b</a>
+                                              <ul>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b1</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b2</a></li>
+                                                <li><a href="#">Ebene 10-D2c1c2a1b3</a></li>
+                                              </ul>
+                                            </li>
+                                            <li><a href="#">Ebene 9-D2c1c2a1c</a></li>
+                                          </ul>
+                                        </li>
+                                        <li><a href="#">Ebene 8-D2c1c2a2</a></li>
+                                        <li><a href="#">Ebene 8-D2c1c2a3</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><a href="#">Ebene 7-D2c1c2b</a></li>
+                                    <li><a href="#">Ebene 7-D2c1c2c</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href="#">Ebene 6-D2c1c3</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#">Ebene 4-D2c2</a></li>
+                        <li><a href="#">Ebene 4-D2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-D3</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-chart-pie"></i>
+                <span>Ebene 1-E</span>
+              </a>
+              <ul>
+                <li>
+                  <a href="#">Ebene 2-E1</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E1a</a></li>
+                    <li><a href="#">Ebene 3-E1b</a></li>
+                    <li><a href="#">Ebene 3-E1c</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Ebene 2-E2</a>
+                  <ul>
+                    <li><a href="#">Ebene 3-E2a</a></li>
+                    <li><a href="#">Ebene 3-E2b</a></li>
+                    <li>
+                      <a href="#">Ebene 3-E2c</a>
+                      <ul>
+                        <li><a href="#">Ebene 4-E2c1</a></li>
+                        <li><a href="#">Ebene 4-E2c2</a></li>
+                        <li><a href="#">Ebene 4-E2c3</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ebene 2-E3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="code-example">
+          <pre><code>$("#menu-4").menu({
+  breakpoint: 99999
+});</code></pre>
+        </div>
+      </div>
+      <!-- - Menu 4 -->
+    </div>
+  </body>
+</html>
