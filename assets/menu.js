@@ -5,20 +5,18 @@
  * vertikalem und horizontalem Layout wechselt. Es verwaltet sowohl die Anzeige als auch
  * das interaktive Verhalten von mehrschichtigen Navigationsmenüs.
  *
- * Das Widget bietet folgende Kernfunktionalitäten:
- * - Automatischer Wechsel zwischen vertikalem und horizontalem Layout basierend auf einem konfigurierbaren Breakpoint
- * - Click- und Hover-Verhalten für Submenüs mit konfigurierbarer Animation
- * - Intelligente Event-Verwaltung für Mouse-Events je nach Gerätetyp
- * - Automatischer Kollaps von nicht aktiven Menüpunkten für verbesserte Übersichtlichkeit
- * - Umfangreiche Anpassungsmöglichkeiten über CSS-Klassen und Konfigurationsoptionen
- *
- * Die Menüstruktur wird automatisch durch CSS-Klassen strukturiert und kann durch
- * einfache CSS-Anpassungen visuell den Projektanforderungen angepasst werden.
+ * Funktionalitäten:
+ * - Automatischer Wechsel zwischen vertikalem und horizontalem Layout
+ * - Konfigurierbare Responsive-Anpassung mit Breakpoint und Container-Element
+ * - Unterstützung für verschachtelte Menüs mit Animation beim Ein- und Ausblenden
+ * - Optionaler Maus-Hover-Modus für die horizontale Darstellung
+ * - Automatische Schließung offener Untermenüs beim Klick außerhalb des Menüs
+ * - Anpassbare CSS-Klassen für alle Menükomponenten
  *
  *
  * Autor:   K3nguruh <https://github.com/K3nguruh>
- * Version: 1.0.0
- * Datum:   2025-03-29
+ * Version: 1.1.0
+ * Datum:   2025-04-16
  * Lizenz:  MIT-Lizenz
  */
 (function ($) {
@@ -28,17 +26,19 @@
      *
      * Diese Optionen definieren die wichtigsten Parameter des Widgets, wie Hover-Verhalten,
      * Breakpoint, Animationsgeschwindigkeit und CSS-Klassen für verschiedene Menü-Elemente.
-     * Sie können durch das Daten-Attribut `data-plugin` oder explizit beim Initialisieren gesetzt werden.
+     * Sie können durch das Daten-Attribut `data-plugin` oder explizit beim Initialisieren
+     * gesetzt werden.
      *
      * @typedef {Object} MenuOptions
      * @property {boolean} mouseHover - Aktiviert/deaktiviert die Hover-Funktionalität (Standard: false)
-     * @property {number} breakpoint - Breite in Pixeln für den Wechsel zwischen mobiler und Desktop-Ansicht (Standard: 1200)
+     * @property {number} breakpoint - Breite in Pixeln für den Layout-Wechsel (Standard: 1200)
+     * @property {string} container - CSS-Selektor für die responsive Anpassung (Standard: "body")
      * @property {number} duration - Dauer der Animationen in Millisekunden (Standard: 200)
      * @property {string} easing - Art des Easings für Animationen (Standard: "linear")
      * @property {Object} classes - CSS-Klassennamen, die vom Widget verwendet werden
      * @property {string} classes.menu - Basis-Klasse für das Menü (Standard: "menu")
-     * @property {string} classes.menuHorizontal - Klasse, die im horizontalen Modus angewendet wird (Standard: "menu-horizontal")
-     * @property {string} classes.menuVertical - Klasse, die im vertikalen Modus angewendet wird (Standard: "menu-vertical")
+     * @property {string} classes.menuHorizontal - Klasse für den horizontalen Modus (Standard: "menu-horizontal")
+     * @property {string} classes.menuVertical - Klasse für den vertikalen Modus (Standard: "menu-vertical")
      * @property {string} classes.menuList - Klasse für Menülisten (Standard: "menu-list")
      * @property {string} classes.menuItem - Klasse für Menüpunkte (Standard: "menu-item")
      * @property {string} classes.menuLink - Klasse für Menülinks (Standard: "menu-link")
@@ -49,6 +49,7 @@
     options: {
       mouseHover: false,
       breakpoint: 1200,
+      container: "body",
       duration: 200,
       easing: "linear",
       classes: {
@@ -90,9 +91,10 @@
      * Initialisiert Widget-Elemente und fügt CSS-Klassen hinzu.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Erfasst alle relevanten DOM-Elemente und speichert sie als jQuery-Objekte
-     * 2. Weist jedem Element-Typ die entsprechende CSS-Klasse zu
-     * 3. Fügt Icon-Elemente zu Menülinks hinzu, die Submenüs enthalten
+     * 1. Erfasst globale Objekte (window, document) und den konfigurierten Container als jQuery-Objekte
+     * 2. Erfasst alle relevanten Menü-Elemente und speichert sie als jQuery-Objekte
+     * 3. Weist jedem Element-Typ die entsprechende CSS-Klasse zu
+     * 4. Fügt Icon-Elemente zu Menülinks hinzu, die Submenüs enthalten
      *
      * @private
      * @return {void}
@@ -100,6 +102,8 @@
     _initWidget: function () {
       this.$window = $(window);
       this.$document = $(document);
+
+      this.$container = $(this.options.container);
 
       this.$menu = this.element;
       this.$menuLists = this.$menu.find("ul");
@@ -122,8 +126,8 @@
      * Diese Methode führt folgende Schritte aus:
      * 1. Registriert einen Resize-Handler auf dem Fenster-Objekt zur Layout-Anpassung
      * 2. Registriert einen Klick-Handler auf dem Dokument für Klicks außerhalb des Menüs
-     * 3. Registriert einen Klick-Handler auf Menüpunkten für das Ein-/Ausklappen von Submenüs
-     * 4. Registriert optional Maus-Event-Handler für Hover-Funktionalität im Desktop-Modus
+     * 3. Registriert einen Klick-Handler auf Menüpunkten für das Ein-/Ausklappen
+     * 4. Registriert optional Maus-Event-Handler für Hover-Funktionalität
      *
      * Die Event-Bindung verwendet die jQuery UI _on-Methode für automatische Event-Bereinigung
      * beim Zerstören des Widgets.
@@ -143,12 +147,12 @@
     },
 
     /**
-     * Behandelt das Fenster-Resize-Ereignis.
+     * Behandelt das Fenster-Resize-Ereignis und passt das Menü an.
      *
      * Diese Methode führt folgende Schritte aus:
      * 1. Bricht laufende Animation-Frame-Anfragen ab, wenn vorhanden
-     * 2. Nutzt requestAnimationFrame für optimierte Performance und sanften Ablauf
-     * 3. Ruft die _resizeMenu-Methode auf, um das Layout anzupassen
+     * 2. Nutzt requestAnimationFrame für optimierte Performance
+     * 3. Ruft die _resizeMenu-Methode auf, die die Container-Breite prüft
      *
      * @private
      * @param {Event} event - Das Resize-Event
@@ -183,7 +187,7 @@
      * 1. Identifiziert den geklickten Menüpunkt und sein zugehöriges Submenü
      * 2. Beendet die Verarbeitung, wenn kein Submenü vorhanden ist
      * 3. Verhindert Ereignis-Bubbling und das Standard-Link-Verhalten
-     * 4. Identifiziert weitere betroffene Menüelemente (Untermenüs und andere Menüs)
+     * 4. Identifiziert weitere betroffene Menüelemente (Submenüs und andere Menülisten)
      * 5. Führt abgestimmte Aktionen für alle identifizierten Menügruppen aus
      *
      * @private
@@ -250,10 +254,10 @@
     },
 
     /**
-     * Passt das Menü basierend auf der Fenstergröße an.
+     * Passt das Menü basierend auf der Container-Breite an.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Ermittelt anhand der aktuellen Fensterbreite, ob der mobile oder Desktop-Modus aktiv sein sollte
+     * 1. Ermittelt den Anzeigemodus anhand der aktuellen Container-Breite
      * 2. Vergleicht den ermittelten Modus mit dem aktuell gesetzten Status
      * 3. Aktualisiert bei Änderung den internen Status und wendet das entsprechende Layout an
      *
@@ -261,7 +265,7 @@
      * @return {void}
      */
     _resizeMenu: function () {
-      const isVertical = this.$window.width() < this.options.breakpoint;
+      const isVertical = this.$container.width() < this.options.breakpoint;
 
       if (this.isVertical !== isVertical) {
         this.isVertical = isVertical;
@@ -304,14 +308,14 @@
      * Steuert die Anzeige von Menülisten mit Animation.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Bestimmt basierend auf dem übergebenen Status die zu verwendende jQuery-Animationsmethode
-     * 2. Bestimmt basierend auf dem Status die zu verwendende Klassenmethode (hinzufügen/entfernen/umschalten)
+     * 1. Bestimmt die zu verwendende jQuery-Animationsmethode basierend auf dem Status
+     * 2. Bestimmt die zu verwendende Klassenmethode (hinzufügen/entfernen/umschalten)
      * 3. Führt die Animation auf der Menüliste aus
      * 4. Aktualisiert den aktiven Status auf dem zugehörigen Link-Element
      *
      * @private
      * @param {jQuery} $menuList - Die zu manipulierende Menüliste als jQuery-Objekt
-     * @param {boolean|null} state - Der anzuwendende Zustand (true = öffnen, false = schließen, null = umschalten)
+     * @param {boolean|null} state - Zustand (true = öffnen, false = schließen, null = umschalten)
      * @return {void}
      */
     _handleMenuList: function ($menuList, state = null) {
@@ -366,11 +370,10 @@
    *
    * Selektiert alle DOM-Elemente mit dem Datenattribut 'data-plugin="menu"' und
    * initialisiert für jedes gefundene Element eine neue Instanz des Menü-Widgets.
-   * Diese Selbst-Initialisierung macht eine manuelle Widget-Erstellung in JavaScript unnötig
-   * und ermöglicht eine deklarative Konfiguration direkt im HTML.
+   * Diese Selbst-Initialisierung ermöglicht eine deklarative Konfiguration direkt
+   * im HTML ohne manuelle JavaScript-Initialisierung.
    *
-   * Die Initialisierung erfolgt nach dem vollständigen Laden des DOM, um sicherzustellen,
-   * dass alle relevanten Elemente verfügbar sind.
+   * Die Initialisierung erfolgt nach dem vollständigen Laden des DOM.
    */
   $(function () {
     $('[data-plugin="menu"]').menu();

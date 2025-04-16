@@ -10,7 +10,8 @@ Das Widget implementiert ein flexibles Navigationsmenü, das automatisch zwische
 
 ## Funktionalitäten
 
-- Automatischer Wechsel zwischen vertikalem und horizontalem Layout basierend auf einem konfigurierbaren Breakpoint
+- Automatischer Wechsel zwischen vertikalem und horizontalem Layout
+- Konfigurierbare Responsive-Anpassung mit Breakpoint und Container-Element
 - Unterstützung für verschachtelte Menüs mit Animation beim Ein- und Ausblenden
 - Optionaler Maus-Hover-Modus für die horizontale Darstellung
 - Automatische Schließung offener Untermenüs beim Klick außerhalb des Menüs
@@ -34,6 +35,7 @@ Das Widget implementiert ein flexibles Navigationsmenü, das automatisch zwische
 | ---------------- | --------------------------------------------------------------------- | --------- | ---------------- |
 | **`mouseHover`** | Aktiviert/Deaktiviert die Hover-Funktionalität im horizontalen Layout | `Boolean` | `false`          |
 | **`breakpoint`** | Pixel-Wert für den Wechsel zwischen den Layouts                       | `Number`  | `1200`           |
+| **`container`**  | CSS-Selektor zur Bestimmung des responsiven Layouts                   | `String`  | `"body"`         |
 | **`duration`**   | Animationsdauer in Millisekunden                                      | `Number`  | `200`            |
 | **`easing`**     | Easing-Funktion für Animationen                                       | `String`  | `"linear"`       |
 | **`classes`**    | CSS-Klassen für verschiedene Menü-Elemente                            | `Object`  | Siehe unten      |
@@ -110,6 +112,7 @@ $(function () {
   $("#menu").menu({
     mouseHover: true,
     breakpoint: 992,
+    container: ".wrapper",
     duration: 300,
     classes: {
       menuHorizontal: "custom-horizontal",
