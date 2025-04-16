@@ -1,5 +1,5 @@
 /**
- * jQuery Widget für responsives Navigationsmenü.
+ * jQuery-Widget für responsives Navigationsmenü.
  *
  * Das Widget implementiert ein flexibles Menüsystem, das automatisch zwischen
  * vertikalem und horizontalem Layout wechselt. Es verwaltet sowohl die Anzeige als auch
@@ -15,7 +15,7 @@
  *
  *
  * Autor:   K3nguruh <https://github.com/K3nguruh>
- * Version: 1.1.0
+ * Version: 1.1.1
  * Datum:   2025-04-16
  * Lizenz:  MIT-Lizenz
  */
@@ -40,11 +40,11 @@
      * @property {string} classes.menuHorizontal - Klasse für den horizontalen Modus (Standard: "menu-horizontal")
      * @property {string} classes.menuVertical - Klasse für den vertikalen Modus (Standard: "menu-vertical")
      * @property {string} classes.menuList - Klasse für Menülisten (Standard: "menu-list")
-     * @property {string} classes.menuItem - Klasse für Menüpunkte (Standard: "menu-item")
+     * @property {string} classes.menuItem - Klasse für Menüitems (Standard: "menu-item")
      * @property {string} classes.menuLink - Klasse für Menülinks (Standard: "menu-link")
      * @property {string} classes.menuText - Klasse für Menütexte (Standard: "menu-text")
      * @property {string} classes.menuIcon - Klasse für Menüsymbole (Standard: "menu-icon")
-     * @property {string} classes.active - Klasse für aktive Menüpunkte (Standard: "active")
+     * @property {string} classes.active - Klasse für aktive Menülinks (Standard: "active")
      */
     options: {
       mouseHover: false,
@@ -124,9 +124,9 @@
      * Bindet Event-Handler an Widget-Elemente.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Registriert einen Resize-Handler auf dem Fenster-Objekt zur Layout-Anpassung
-     * 2. Registriert einen Klick-Handler auf dem Dokument für Klicks außerhalb des Menüs
-     * 3. Registriert einen Klick-Handler auf Menüpunkten für das Ein-/Ausklappen
+     * 1. Registriert einen Resize-Handler auf dem Window-Objekt zur Layout-Anpassung
+     * 2. Registriert einen Click-Handler auf dem Dokument für Clicks außerhalb des Menüs
+     * 3. Registriert einen Click-Handler auf Menülinks für das Ein-/Ausklappen
      * 4. Registriert optional Maus-Event-Handler für Hover-Funktionalität
      *
      * Die Event-Bindung verwendet die jQuery UI _on-Methode für automatische Event-Bereinigung
@@ -138,7 +138,7 @@
     _initEvents: function () {
       this._on(this.$window, { "resize": "_onResizeWindow" });
       this._on(this.$document, { "click": "_onClickDocument" });
-      this._on(this.$menu, { "click li": "_onClickItem" });
+      this._on(this.$menu, { "click li > a": "_onClickLink" });
 
       if (this.options.mouseHover) {
         this._on(this.$menu, { "mouseenter li": "_onEnterItem" });
@@ -147,7 +147,7 @@
     },
 
     /**
-     * Behandelt das Fenster-Resize-Ereignis und passt das Menü an.
+     * Behandelt das Resize-Event und passt das Menü an.
      *
      * Diese Methode führt folgende Schritte aus:
      * 1. Bricht laufende Animation-Frame-Anfragen ab, wenn vorhanden
@@ -164,10 +164,10 @@
     },
 
     /**
-     * Behandelt Klicks außerhalb des Menüs.
+     * Behandelt Click-Events außerhalb des Menüs.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Prüft, ob der Klick außerhalb aller Menülisten erfolgte
+     * 1. Prüft, ob der Click außerhalb aller Menülisten erfolgte
      * 2. Ruft bei Bestätigung die _resetMenuList-Methode auf, um alle offenen Menüs zu schließen
      *
      * @private
@@ -181,26 +181,25 @@
     },
 
     /**
-     * Behandelt Klick-Ereignisse auf Menüpunkten.
+     * Behandelt Click-Events auf Menülinks.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Identifiziert den geklickten Menüpunkt und sein zugehöriges Submenü
+     * 1. Identifiziert den geklickten Menülink und sein zugehöriges Submenü
      * 2. Beendet die Verarbeitung, wenn kein Submenü vorhanden ist
-     * 3. Verhindert Ereignis-Bubbling und das Standard-Link-Verhalten
+     * 3. Verhindert das Standard-Link-Verhalten mit preventDefault()
      * 4. Identifiziert weitere betroffene Menüelemente (Submenüs und andere Menülisten)
-     * 5. Führt abgestimmte Aktionen für alle identifizierten Menügruppen aus
+     * 5. Führt abgestimmte Aktionen für alle identifizierten Menülisten aus
      *
      * @private
      * @param {Event} event - Das Click-Event
      * @return {void}
      */
-    _onClickItem: function (event) {
-      const $menuItem = $(event.currentTarget);
-      const $menuList = $menuItem.children("ul");
+    _onClickLink: function (event) {
+      const $menuLink = $(event.currentTarget);
+      const $menuList = $menuLink.siblings("ul");
 
       if (!$menuList.length) return;
 
-      event.stopPropagation();
       event.preventDefault();
 
       const $subList = $menuList.find("ul");
@@ -212,15 +211,15 @@
     },
 
     /**
-     * Behandelt Mouse-Enter-Ereignisse auf Menüpunkten.
+     * Behandelt Mouse-Enter-Events auf Menüitems.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Identifiziert den Menüpunkt, über dem der Mauszeiger schwebt
-     * 2. Prüft, ob der Menüpunkt ein Submenü enthält und ob der Desktop-Modus aktiv ist
+     * 1. Identifiziert das Menüitem, über dem der Mauszeiger schwebt
+     * 2. Prüft, ob das Menüitem ein Submenü enthält und ob der Desktop-Modus aktiv ist
      * 3. Zeigt bei positiver Prüfung das Submenü automatisch an
      *
      * @private
-     * @param {Event} event - Das Mouseenter-Event
+     * @param {Event} event - Das Mouse-Enter-Event
      * @return {void}
      */
     _onEnterItem: function (event) {
@@ -233,15 +232,15 @@
     },
 
     /**
-     * Behandelt Mouse-Leave-Ereignisse auf Menüpunkten.
+     * Behandelt Mouse-Leave-Events auf Menüitems.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Identifiziert den Menüpunkt, den der Mauszeiger verlassen hat
-     * 2. Prüft, ob der Menüpunkt ein Submenü enthält und ob der Desktop-Modus aktiv ist
+     * 1. Identifiziert das Menüitem, das der Mauszeiger verlassen hat
+     * 2. Prüft, ob das Menüitem ein Submenü enthält und ob der Desktop-Modus aktiv ist
      * 3. Schließt bei positiver Prüfung das Submenü sofort
      *
      * @private
-     * @param {Event} event - Das Mouseleave-Event
+     * @param {Event} event - Das Mouse-Leave-Event
      * @return {void}
      */
     _onLeaveItem: function (event) {
