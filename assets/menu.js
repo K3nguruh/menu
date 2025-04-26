@@ -15,8 +15,8 @@
  *
  *
  * Autor:   K3nguruh <https://github.com/K3nguruh>
- * Version: 1.1.1
- * Datum:   2025-04-16
+ * Version: 1.1.2
+ * Datum:   2025-04-27 00:32
  * Lizenz:  MIT-Lizenz
  */
 (function ($) {
@@ -167,7 +167,7 @@
      * Behandelt Click-Events außerhalb des Menüs.
      *
      * Diese Methode führt folgende Schritte aus:
-     * 1. Prüft, ob der Click außerhalb aller Menülisten erfolgte
+     * 1. Prüft, ob der Click außerhalb aller Menülisten und Dialoge erfolgte
      * 2. Ruft bei Bestätigung die _resetMenuList-Methode auf, um alle offenen Menüs zu schließen
      *
      * @private
@@ -175,7 +175,7 @@
      * @return {void}
      */
     _onClickDocument: function (event) {
-      if (!$(event.target).closest(this.$menuLists).length) {
+      if (!$(event.target).closest(this.$menuLists).length && !$(event.target).closest('[role="dialog"]').length) {
         this._resetMenuList(this.options.duration);
       }
     },

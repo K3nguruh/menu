@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.2] - 2025-04-27
+
+- **FIX**: Klick außerhalb von Menüs schließt keine offenen Menüs mehr, wenn ein Dialog mit `[role="dialog"]` geöffnet ist
+
 ## [1.1.1] - 2025-04-16
 
 - **FIX**: Event-Handler von Menüitems auf Menülinks verschoben für präzisere Event-Delegation
