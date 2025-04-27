@@ -15,8 +15,8 @@
  *
  *
  * Autor:   K3nguruh <https://github.com/K3nguruh>
- * Version: 1.1.2
- * Datum:   2025-04-27 00:32
+ * Version: 1.1.3
+ * Datum:   2025-04-27 11:40
  * Lizenz:  MIT-Lizenz
  */
 (function ($) {
@@ -264,7 +264,7 @@
      * @return {void}
      */
     _resizeMenu: function () {
-      const isVertical = this.$container.width() < this.options.breakpoint;
+      const isVertical = this.$container.innerWidth() < this.options.breakpoint;
 
       if (this.isVertical !== isVertical) {
         this.isVertical = isVertical;

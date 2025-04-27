@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.3] - 2025-04-27
+
+- **FIX**: In `_resizeMenu` wird jetzt `innerWidth()` statt `width()` verwendet, um Padding beim Responsive-Breakpoint korrekt zu berücksichtigen
+
 ## [1.1.2] - 2025-04-27
 
 - **FIX**: Klick außerhalb von Menüs schließt keine offenen Menüs mehr, wenn ein Dialog mit `[role="dialog"]` geöffnet ist
